@@ -1,0 +1,235 @@
+<!-- 首页 -->
+<div class="home">
+	<div class="warpper">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="left-box">
+					<div class="icon">
+						<i class="fa fa-cloud" aria-hidden="true"></i>
+					</div>
+					<div class="desc">
+						<span>99.9%</span>
+						<small>SERVER UPTIME</small>
+					</div>
+				</div>
+				<div class="left-box">
+					<div class="icon">
+						<i class="fa fa-cloud" aria-hidden="true"></i>
+					</div>
+					<div class="desc">
+						<span>99.9%</span>
+						<small>SERVER UPTIME</small>
+					</div>
+				</div>
+				<div class="left-box">
+					<div class="icon">
+						<i class="fa fa-cloud" aria-hidden="true"></i>
+					</div>
+					<div class="desc">
+						<span>99.9%</span>
+						<small>SERVER UPTIME</small>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="center-box">
+					<!-- 折线统计图 -->
+					<div id="hBroken" style="max-width:800px;height:250px"></div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="right-box">
+					<!-- 柱状统计图 -->
+					<div id="hColumnar" style="max-width:400px;height:125px"></div>
+					<!-- 扇形统计图 -->
+					<div id="hSector" style="max-width:400px;height:125px"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+
+//highChart画折线统计图
+hBroken();
+function hBroken(){
+		var chart = Highcharts.chart('hBroken', {
+		title: {
+			text: '2010 ~ 2016 年太阳能行业就业人员发展情况'
+		},
+		subtitle: {
+			text: '数据来源：thesolarfoundation.com'
+		},
+		yAxis: {
+			title: {
+				text: '就业人数'
+			}
+		},
+		legend: {
+			layout: 'vertical',
+			align: 'right',
+			verticalAlign: 'middle'
+		},
+		plotOptions: {
+			series: {
+				label: {
+					connectorAllowed: false
+				},
+				pointStart: 2010
+			}
+		},
+		series: [{
+			name: '安装，实施人员',
+			data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+		}, {
+			name: '工人',
+			data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+		}, {
+			name: '销售',
+			data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+		}, {
+			name: '项目开发',
+			data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+		}, {
+			name: '其他',
+			data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+		}],
+		responsive: {
+			rules: [{
+				condition: {
+					maxWidth: 500
+				},
+				chartOptions: {
+					legend: {
+						layout: 'horizontal',
+						align: 'center',
+						verticalAlign: 'bottom'
+					}
+				}
+			}]
+		}
+	});
+}
+
+
+
+//highChart画柱状统计图
+hColumnar();
+function hColumnar(){
+	var chart = Highcharts.chart('hColumnar', {
+		chart: {
+			type: 'column'
+		},
+		title: {
+			text: ''
+		},
+		subtitle: {
+			text: ''
+		},
+		xAxis: {
+			title:'',
+			tickWidth:0,
+			labels: {
+				enabled: false
+			} 
+		},
+		yAxis: {
+			title:'',
+			labels: {
+				enabled: false
+			} 
+		},
+		series: [{
+			name: '总人口',
+			data: [
+				['上海', 24.25],
+				['卡拉奇', 23.50],
+				['北京', 21.51],
+				['德里', 16.78],
+				['拉各斯', 16.06],
+				['天津', 15.20],
+				['伊斯坦布尔', 14.16],
+				['东京', 13.51],
+				['广州', 13.08],
+				['孟买', 12.44],
+				['莫斯科', 12.19],
+				['圣保罗', 12.03],
+				['深圳', 10.46],
+				['雅加达', 10.07],
+				['拉合尔', 10.05],
+				['首尔', 9.99],
+				['武汉', 9.78],
+				['金沙萨', 9.73],
+				['开罗', 9.27],
+				['墨西哥', 8.87]
+			],
+			dataLabels: {
+				// enabled: true,
+				// rotation: -90,
+				// color: '#FFFFFF',
+				// align: 'right',
+				// format: '{point.y:.1f}', // :.1f 为保留 1 位小数
+				// y: 10
+			}
+		}]
+});
+}
+
+
+
+//highChart画扇形统计图
+hSector();
+function hSector(){
+	var chart = Highcharts.chart('hSector', {
+		title: {
+			// text: '浏览器<br>占比',
+			text: '',
+			align: 'center',
+			verticalAlign: 'middle',
+			y: 50
+		},
+		// tooltip: {
+		// 	headerFormat: '{series.name}<br>',
+		// 	pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
+		// },
+		plotOptions: {
+			pie: {
+				dataLabels: {
+					enabled: false, //去除上面的显示提示数据
+					distance: -50,
+					style: {
+						fontWeight: 'bold',
+						color: 'white',
+						textShadow: '0px 1px 2px black'
+					}
+				},
+				startAngle: 0, // 圆环的开始角度
+				endAngle: 360,    // 圆环的结束角度
+				center: ['80%', '50%']
+			}
+		},
+		series: [{
+			type: 'pie',
+			// name: '浏览器占比',
+			name: '',
+			innerSize: '50%',
+			data: [
+				['Firefox',   45.0],
+				['IE',       26.8],
+				['Chrome', 12.8],
+				['Safari',    8.5],
+				['Opera',     6.2],
+				{
+					name: '其他',
+					y: 0.7,
+					dataLabels: {
+						// // 数据比较少，没有空间显示数据标签，所以将其关闭
+						// enabled: false
+					}
+				}
+			]
+		}]
+	});
+}
+
+</script>
+</div>
